@@ -2,3 +2,4 @@
 *.dvi
 *.log
 *.pdf
+.qualnet_*.0
