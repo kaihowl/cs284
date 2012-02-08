@@ -1,0 +1,148 @@
+\begin{thebibliography}{10}
+
+\bibitem{17}
+Arduino.
+\newblock \url{http://www.arduino.cc}.
+
+\bibitem{16}
+Scalable networks technologies.
+\newblock \url{http://www.scalable-networks.com}.
+
+\bibitem{18}
+Xbee.
+\newblock \url{http://www.digi.com/xbee}.
+
+\bibitem{19}
+{\em XBee RF Module -- Product Manual}, v1.xex edition.
+\newblock \url{http://ftp1.digi.com/support/documentation/90000982_B.pdf}.
+
+\bibitem{15}
+P.~H.~Ho Ahmad R.~Dhaini and G.~Shen.
+\newblock Energy efficiency in ethernet passive optical networks for how long
+  can onu sleep.
+\newblock In {\em In Proceedings of IEEE GLOBECOM11}, 2011.
+
+\bibitem{1}
+Giuseppe Anastasi, Marco Conti, Mario~Di Francesco, and Andrea Passarella.
+\newblock Energy conservation in wireless sensor networks: A survey.
+\newblock {\em Ad Hoc Networks}, 7(3):537 -- 568, 2009.
+
+\bibitem{22}
+Luigi Atzori, Antonio Iera, and Giacomo Morabito.
+\newblock The internet of things: A survey.
+\newblock {\em Computer Networks}, 54(15):2787 -- 2805, 2010.
+
+\bibitem{2}
+Philippe Bonnet, Johannes Gehrke, and Praveen Seshadri.
+\newblock Towards sensor database systems.
+\newblock In Kian-Lee Tan, Michael Franklin, and John Lui, editors, {\em Mobile
+  Data Management}, volume 1987 of {\em Lecture Notes in Computer Science},
+  pages 3--14. Springer Berlin / Heidelberg, 2001.
+\newblock {10.1007/3-540-44498-X\_1}.
+
+\bibitem{10}
+B.~Bougard, F.~Catthoor, D.C. Daly, A.~Chandrakasan, and W.~Dehaene.
+\newblock Energy efficiency of the ieee 802.15.4 standard in dense wireless
+  microsensor networks: modeling and improvement perspectives.
+\newblock In {\em Design, Automation and Test in Europe, 2005. Proceedings},
+  pages 196 -- 201 Vol. 1, march 2005.
+
+\bibitem{20}
+B.~T. Doshi.
+\newblock Queueing systems with vacations --- a survey.
+\newblock {\em Queueing Systems}, 1:29--66, 1986.
+\newblock 10.1007/BF01149327.
+
+\bibitem{12}
+Rick~W. Ha, Pin-Han Ho, and Xuemin~Sherman Shen.
+\newblock Optimal sleep scheduling with transmission range assignment in
+  application-specific wireless sensor networks.
+\newblock {\em International Journal of Sensor Networks}, 1(1-2):72--88, 2006.
+
+\bibitem{25}
+Q.~Han, Sharad Mehrotra, and Nalini Venkatasubramanian.
+\newblock Energy efficient data collection in distributed sensor environments.
+\newblock In {\em Distributed Computing Systems, 2004. Proceedings. 24th
+  International Conference on}, pages 590 -- 597, 2004.
+
+\bibitem{8}
+C.Y. Jung, H.Y. Hwang, D.K. Sung, and G.U. Hwang.
+\newblock Enhanced markov chain model and throughput analysis of the slotted
+  csma/ca for ieee 802.15.4 under unsaturated traffic conditions.
+\newblock {\em Vehicular Technology, IEEE Transactions on}, 58(1):473 --478,
+  jan. 2009.
+
+\bibitem{21}
+Leonard Kleinrock.
+\newblock {\em Theory, Volume 1, Queueing Systems}.
+\newblock Wiley-Interscience, 1975.
+
+\bibitem{7}
+Dilip Kumar, Trilok~C. Aseri, and R.B. Patel.
+\newblock Eehc: Energy efficient heterogeneous clustered scheme for wireless
+  sensor networks.
+\newblock {\em Computer Communications}, 32(4):662 -- 667, 2009.
+
+\bibitem{6}
+Zhiwu Liu and Wei Wu.
+\newblock A dynamic multi-radio multi-channel mac protocol for wireless sensor
+  networks.
+\newblock In {\em Proceedings of the 2010 Second International Conference on
+  Communication Software and Networks}, ICCSN '10, pages 105--109, Washington,
+  DC, USA, 2010. IEEE Computer Society.
+
+\bibitem{24}
+Sam Madden, Joe Hellerstein, and Wei Hong.
+\newblock {\em {TinyDB: In-Network Query Processing in TinyOS}}, 2003.
+
+\bibitem{4.11}
+A.~Manjeshwar, Qing-An Zeng, and D.P. Agrawal.
+\newblock An analytical model for information retrieval in wireless sensor
+  networks using enhanced apteen protocol.
+\newblock {\em Parallel and Distributed Systems, IEEE Transactions on},
+  13(12):1290 -- 1302, dec 2002.
+
+\bibitem{3}
+S.~Middleton.
+\newblock Ieee 802.15 wpan low rate study group par.
+\newblock Technical Report doc. number IEEE P802.15-00/248r3, IEEE, 2002.
+
+\bibitem{9}
+E.~D.~N. Ndih, N.~Khaled, and G.~De~Micheli.
+\newblock An {A}nalytical {M}odel for the {C}ontention {A}ccess {P}eriod of the
+  {S}lotted {IEEE} 802.15.4 {w}ith {S}ervice {D}ifferentiation.
+\newblock In {\em Proceedings of the {IEEE} {I}nternational {C}onference on
+  {C}ommunications ({ICC})}, pages 1--6, 2009.
+
+\bibitem{aodv}
+Charles~E. Perkins, Elizabeth~M. Belding-Royer, and Samir~R. Das.
+\newblock Ad hoc on-demand distance vector (aodv) routing.
+\newblock RFC Experimental 3561, Internet Engineering Task Force, July 2003.
+
+\bibitem{13}
+Qingchun Ren and Qilian Liang.
+\newblock Energy-efficient medium access control protocols for wireless sensor
+  networks.
+\newblock {\em EURASIP J. Wirel. Commun. Netw.}, 2006:5--5, April 2006.
+
+\bibitem{14}
+Mohamed~A. Sharaf, Jonathan Beaver, Alexandros Labrinidis, and Panos~K.
+  Chrysanthis.
+\newblock Balancing energy efficiency and quality of aggregate data in sensor
+  networks.
+\newblock {\em The VLDB Journal}, 13:384--403, 2004.
+
+\bibitem{23}
+Yong Yao and Johannes Gehrke.
+\newblock The cougar approach to in-network query processing in sensor
+  networks.
+\newblock {\em SIGMOD Rec.}, 31:9--18, September 2002.
+
+\bibitem{5}
+Wei Ye, J.~Heidemann, and D.~Estrin.
+\newblock An energy-efficient mac protocol for wireless sensor networks.
+\newblock In {\em INFOCOM 2002. Twenty-First Annual Joint Conference of the
+  IEEE Computer and Communications Societies. Proceedings. IEEE}, volume~3,
+  pages 1567 -- 1576 vol.3, 2002.
+
+\end{thebibliography}

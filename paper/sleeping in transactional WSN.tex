@@ -1,0 +1,143 @@
+\documentclass[10pt, conference]{IEEEtran}
+
+% \usepackage{hyperref}	%To get rid of EDAS warning: External links are not allowed
+\usepackage{amsmath}
+%\pdfpagewidth=8.5in
+%\pdfpageheight=11in
+\usepackage{graphicx}
+\usepackage{array}                 % nicer looking arrays?
+\usepackage{cite}
+\usepackage{url}
+\usepackage{multirow} 		% multiple rows in a table
+%\usepackage{subfigure}
+\usepackage{subfig}
+\usepackage{color,latexsym,amsfonts,amssymb}
+\usepackage{bm} %use \bm instead of \mathbf
+
+\makeatletter
+\def\ps@headings{%
+\def\@oddhead{\mbox{}\scriptsize\rightmark \hfil \thepage}%
+\def\@evenhead{\scriptsize\thepage \hfil \leftmark\mbox{}}%
+\def\@oddfoot{}%
+\def\@evenfoot{}}
+\addtolength\textfloatsep{-3ex}
+
+\title{Title}
+
+\author{\authorblockN{Faisal Nawab\authorrefmark{1}, Kai\authorrefmark{1}}
+, 
+\authorblockA{\authorrefmark{1} Dept. of Computer Science, University of California at Santa Barbara, Santa Barbara, CA, {nawab}@cs.ucsb.edu}
+}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+
+\end{abstract}
+
+\begin{keywords}
+
+\end{keywords}
+
+\section{Introduction}\label{sec:Intro}
+
+Wireless Sensor Networks (WSNs) use sensors to measure a wide variety of live data and actuators to manipulate their environments. Data are communicated between nodes and sinks. WSNs are self-configuring, inherently small, low-cost, and low-power. This makes it a suitable technology for use in monitoring and tracking applications. Many of the envisioned applications of sensor networks require a large-scale deployment that comprises thousands of sensor nodes, e.g., the Internet of things \cite{22} and sensor database systems \cite{2}. With a large number of sensor nodes, it becomes challenging to maintain all collected data in a centralized unit (or multiple centralized units). Moreover, the demand for data might vary from node to node. Keeping the node awake at all times is a waste of communication resources and will ultimately drain the nodes power prematurely. A energy-aware demand-driven transactional protocol is needed to mitigate this waste of resources. Many papers propose a distributed approach to data-management in sensor networks \cite{2,4.11,23}. Instead of having a central database collecting sensor readings from individual nodes, the data is stored and distributed over the nodes themselves. Queries then extract the necessary data from the sensor nodes. 
+
+In a transactional distributed scheme the node needs to be alerted for any data queries. Thus, making the node awake (i.e., consuming energy) even if it is not sending or collecting data. A desirable property of WSNs is power-efficiency. The main objective of this work is to save power and prolong the life of nodes by making them consume as less power as possible. Having low sleep times will make a node handle incoming requests faster, since they are only waiting for a short period. However, a longer sleeping period will minimize the number of switches between sleeping and active modes. These switches incur a communication overhead; a newly awaken node must poll its parent node for requests. Furthermore, the waking time (the time required for a node to switch from sleeping to active) ranges between 2 to 13.2 milliseconds for XBEE series 2 nodes \cite{19}. Thus, we aim to maximize sleeping time while we maintain QoS requirements.
+
+A transactional framework for WSNs was proposed \cite{2, 24}. Our framework is based on them. Specifically we will use the notion of one-time and persistent queries. Queries specify rules that include among others: (1) the duration of needed observations. (2) frequency. (3) upper/lower thresholds. (4) desired locations/sensors. and (5) QoS requirements. In \cite{2}, a hybrid storage system to maintain historical data is proposed; historical data should be sent out by the node to a central site where it is stored for later retrieval. We pursue a more a radical approach and propose to employ a fully distributed scheme. If a central node or entity was interested in maintaining the history of a specific node, it can poll it on demand or issue a persistent query. A persistent query tells a node to send collected data for a specific duration and rate, e.g., send me the temperature every ten minutes for the next seven days.
+
+Energy conservation gained a lot of attention in the WSNs community \cite{1,5,6,7}; proposals to design MAC and routing protocols, in addition to topology control that are energy aware are examples of such work. We, however, consider a more practical approach; we consider network topology is a given. This is important since we cannot assume that we have control on the topology or movement of nodes. Also, we consider off-the-shelf hardware. Thus, we model our solution around the IEEE 802.15.4 standard and AODV protocol \cite{aodv}. Some other work also tried to model IEEE 802.15.4 networks \cite{8,9,10,4.11,12,13}. Some work even model the network for energy efficiency \cite{10,12,13}. Our work focuses on on-demand query-based transactional WSNs. This type of WSNs has also been treated for energy efficiency consideration \cite{14,25}. In~\cite{25}, the authors try to minimize energy consumption by sleeping. They develop a probabilistic model that trade-off between energy and data quality. Our model extends the work done in the literature of modeling transactional WSNs by the following. We consider the trade-off between QoS and energy efficiency. Also, we employ an M/G/1 model with vacations to capture the system and derive appropriate sleeping times given QoS requirements. Similar employment of this mathematical treatment is done in \cite{15} for optical networks. We use their approach and modify it to model IEEE 802.15.4 sleeping times.
+
+The paper is divided as the following. \ldots
+
+\section{Background}\label{sec:background}
+
+\subsection{Sensor database systems}
+/* Review the system (Towards a sensor database is a good source \& tinyDB arch.). With an example of a query and platform/application. */
+
+\subsection{Prototype infrastructure}
+/* speak here about arduino, XBee, ZigBee protocol, and 802.15.4 */
+
+\section{System design}\label{sec:design}
+
+\subsection{Front-end design}
+/* This subsection on the front-end (server) that will take queries and process them and transform them to light-weight queries sent to the sensors */
+
+\subsubsection{Query processing}
+/* The process of breaking the query to simpler light-weight queries. How data is assembled from nodes etc */
+
+\subsubsection{Concurrency gurantees}
+/* I was thinking that we should add actuators to our system. For example, a sensor to detect if the light is on and is capable of turning the light on/off (or something like, if the temperature is above 25 deg. turn AC on). What is here is how to gurantee that a query is right. I propose to treat it as timestamp-based concurrency management, and the proof of correctness is available. Also, we should talk that a property of this scheme is that a correct behavior is maintained while that we always accept read requests, but a write can be rejected.
+BTW, I beleive this is VEEEERY novel, they usually talk about sensing only.
+ */
+
+\subsection{Back-end design}
+/* from the sensor side. */
+
+\section{Modeling QoS}\label{sec:model}
+
+\subsection{Modeling a network vs. modeling a node}
+
+\subsection{QoS model}
+In this section, we will develop a model of delay and queue utilization of our system. We will use an M/G/1 queue model with vacations. As we demonstrated above, we can treat every node in isolation. We denote the amount of incoming traffic to the node by $\lambda$. The distribution of interarrival times, $A(t)$, is exponential and calculated as the following:
+\begin{equation}
+A(t) = 1 - e^{-\lambda\ t}
+\end{equation}
+Where the mean is $\frac{1}{\lambda}$. Since we are dealing with standard queries, we assume that packet sizes are fixed. Figure~\ref{fig:packet_size} shows the contents of transmitted and received frames. The service time is the time required to service the packet in the head of the queue. 
+This value is dependent on the contention of the medium, the time required to successfully send the packet to the coordinator. We assume that the process of collecting data in addition to internal processing is negligible.
+
+We start by observing the waiting time. It is the summation of time spent in the queue in addition to the service time, given by
+\begin{equation}
+W = R + \sum_{j \in queue} X_j
+\end{equation}
+where $R$ is the residual service time seen by an arriving query and $X_j$ is the service time for query $j$. Taking expectations we have
+\begin{equation}
+W = R + \bar{X}N_q
+\end{equation}
+where $N_q$ is the average queue utilization. Using Little's Formula~\cite{Littles} we arrive to the following
+\begin{equation}
+\label{eq:waiting}
+W = \frac{R}{1 - \rho}
+\end{equation}
+where $\rho$ is the traffic intensity equal to $\lambda\bar{X}$. Thus, we need to find an expression for the average residual time seen by an incoming query. This can be obtained by calculating the average of residual times in a time interval $[0, t]$
+\begin{equation}
+\frac{1}{t} \int_0^t r(\tau) d\tau
+\end{equation}
+where $r(\tau)$ is the residual time at time $\tau$. The integral is the summation of the contribution of each service time in the considered time interval. The contribution of each service time is half the square of that query's service time. The same is applied to vacations, where the contribution of each vacation period is half the square of that query's service time. This is demonstrated as the following:
+\begin{equation}
+\frac{1}{t} \int_0^t r(\tau) d\tau = \frac{1}{t} \sum_{i \in S(0,t)} \frac{X_i^2}{2} + \frac{1}{t} \sum_{i \in V(0,t)} \frac{V_i^2}{2}
+\end{equation}
+where $S(0,t)$ and $V(0,t)$ are the set of serviced queries and vacations in the time period $[0, t]$, respectively, and $V_i$ is the vacation time. Solving the summation and taking the limit of $t$ approaching infinity we obtain
+\begin{equation}
+\label{eq:residual}
+R = \frac{\lambda\bar{X^2}}{2} + \frac{(1-\rho)\bar{V^2}}{2\bar{V}}
+\end{equation}
+Substituting Equation~\ref{eq:residual} in Equation~\ref{eq:waiting} gives us
+\begin{equation}
+\label{eq:waiting_2}
+W = \frac{\lambda\bar{X^2}}{2 (1-\rho)} + \frac{\bar{V^2}}{2\bar{V}}
+\end{equation}
+In this relation, $\bar{X^2}$ is the only unknown. The second expectation is given as the sum of variance and squared mean. Thus, we need to find them out. First, we have to derive a formula to describe the service time. We assume that channel contention dominates specifying this value. Also, we assume that nodes are backloged. This is a valid assumption sense we will be having vacation periods, hence maximizing sleeping lead to the existence of queries to be answered. Since contention is the factor we are considering for service time, we can derive the service time as the inverse of steady-state throughput. We use the model given in~\cite{802.15.4_model}. In it throughput is calculated as
+\begin{equation}
+\label{eq:throughput}
+A looooong equation
+\end{equation}
+where \ldots. This relation assumes that all nodes are in interference range to each other /* unless reference 13 */. We, however, need to modify this relation to account for sleeping nodes.
+
+\section{Evaluation}
+
+\subsection{QoS measurements}
+
+\subsection{Sleeping nodes}
+
+
+\section{Conclusions and Future Work}\label{sec:conclusions}
+
+
+\bibliographystyle{plain}
+\bibliography{bibtexlib}
+
+\end{document}
