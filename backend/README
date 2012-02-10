@@ -1,1 +1,7 @@
-XXX
+The folder main_p contains the actual code
+used in Arduino boards.
+
+1. Light-weight queries:
+	Light-weight Queries (LWQ) are accepted by
+	our code on Arduino. XXX
+
