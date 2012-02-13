@@ -17,6 +17,14 @@ function connect() {
 
 ////////////////////////////  Function to fetch NodeId by FloorNumber,MacAddress,NodeName //////////////////////////////////////////////////////
 
+function getAllNodeIds($floorNumber){
+
+ $sql="select * from Nodes where 1";
+ $result=mysql_query($sql);
+ return $result;
+}
+
+
 function getNodeIdsByFloorNumber($floorNumber){
 
  $sql="select NodeId from Nodes where FloorNumber='".$floorNumber."'";
