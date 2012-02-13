@@ -1,4 +1,4 @@
-<? 
+<?php 
 
 /*
 This function should be called from the query processor.
@@ -16,13 +16,18 @@ function comm_recv_up ($nodeId)
 function prepare_packet($nodeId)
 {
 	// XXX prepare packet
-	$packet = "G;"
+	$packet = "G;";
 	return $packet;
 }
 
 function transmit($packet)
 {
 	// send through serial port
+	$fp = fopen("/dev/ttyUSB0", "w");
+
+	fwrite ($fp, $packet);
+
+	fclose ($fp);
 
 	return 1;
 }
@@ -30,9 +35,11 @@ function transmit($packet)
 function add_to_waiting_queue($nodeId)
 {
 	// add to waiting queue
+
+	return 1;
 }
 
-bool comm_recv_down ($packet)
+function comm_recv_down ($packet)
 {
 	$info = get_info ($packet);
 	
@@ -46,6 +53,6 @@ bool comm_recv_down ($packet)
 	return 1;
 }
 
-
+comm_recv_up (1);
 
 ?>
