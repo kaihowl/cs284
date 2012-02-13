@@ -16,7 +16,13 @@ function comm_recv_up ($nodeId)
 function prepare_packet($nodeId)
 {
 	// XXX prepare packet
-	$packet = "G;";
+	$packet = "GXXXX;";
+
+	list($usec, $sec) = explode(" ", microtime());
+    	$ts = (string) ((float)$usec + (float)$sec);
+	$packet = "G" . $ts . ";";
+	
+	echo $packet;
 	return $packet;
 }
 

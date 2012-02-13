@@ -1,6 +1,6 @@
-<?
+<?php
 $ip="localhost";
-$database="db";
+$database="NodeDB";
 $username="root";
 $password="root";
 ?>
