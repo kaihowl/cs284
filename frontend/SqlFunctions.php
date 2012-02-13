@@ -25,6 +25,14 @@ function getAllNodeIds(){
 }
 
 
+function setNodeData($nodeId,$queueLen,$responseTime){
+
+  $phpDate=date( 'Y-m-d H:i:s',time());
+  $sql="insert into NodeData (`NodeId`,`QueueLength`,`Timestamp`,`ResponseTime`) values('$nodeId','$queueLen','$phpDate','$responseTime')";
+  $result=mysql_query($sql) or die(mysql_error());
+}
+
+
 function getNodeIdsByFloorNumber($floorNumber){
 
  $sql="select NodeId from Nodes where FloorNumber='".$floorNumber."'";
