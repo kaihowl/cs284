@@ -3,6 +3,7 @@ String getCommand ();
 String processCommand (String command);
 String getReading (String type);
 
+
 void setup()
 {
   // start the serial interface
@@ -51,7 +52,7 @@ String processCommand (String command)
       break;
   }
       
-  return ret;
+  return ret+command.substring(1);
   
 }
 
