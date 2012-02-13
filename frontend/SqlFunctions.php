@@ -21,48 +21,42 @@ function getNodeIdsByFloorNumber($floorNumber){
 
  $sql="select NodeId from Nodes where FloorNumber='".$floorNumber."'";
  $result=mysql_query($sql);
- $rows=mysql_fetch_array($result);
- return $rows;
+ return $result;
 }
 
 function getNodeIdByMacAddr($macAddr){
 
  $sql="select NodeId from Nodes where NodeMacAddr='".$macAddr."'";
  $result=mysql_query($sql);
- $rows=mysql_fetch_array($result);
- return $rows;
+ return $result;
 }
 
 function getNodeIdByNodeName($nodeName){
 
  $sql="select NodeId from Nodes where NodeName='".$nodeName."'";
  $result=mysql_query($sql);
- $rows=mysql_fetch_array($result);
- return $rows;
+ return $result;
 }
 
 function getQueueLengthByNodeId($queueLen){
 
  $sql="select NodeId from NodeData where QueueLength='".$queueLen."'";
  $result=mysql_query($sql);
- $rows=mysql_fetch_array($result);
- return $rows;
+ return $result;
 }
 
 function getNodeDataByNodeId($nodeId){
 
  $sql="select NodeId,QueueLength,Timestamp,ResponseTime from NodeData where NodeId='".$nodeId."'";
  $result=mysql_query($sql);
- $rows=mysql_fetch_array($result);
- return $rows;
+ return $result;
 }
 
 function getNodeAttrByNodeId($nodeId){
 
  $sql="select Attribute from NodeAttr where NodeId='".$nodeId."'";
  $result=mysql_query($sql);
- $rows=mysql_fetch_array($result);
- return $rows;
+ return $result;
 }
 
 ?>
