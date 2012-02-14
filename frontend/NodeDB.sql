@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `NodeData` (
   `NodeId` bigint(128) NOT NULL,
   `QueueLength` bigint(10) NOT NULL,
   `Timestamp` datetime NOT NULL,
-  `ResponseTime` int(8) NOT NULL,
+  `ResponseTime` float(8) NOT NULL,
   KEY `NodeId` (`NodeId`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
