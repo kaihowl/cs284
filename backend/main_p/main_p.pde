@@ -49,10 +49,11 @@ String processCommand (String command)
       ret = getReading ("dummy");
       break;
     default:
+      ret = "ERROR";
       break;
   }
       
-  return ret+command.substring(1);
+  return ret+":"+command.substring(1);
   
 }
 
