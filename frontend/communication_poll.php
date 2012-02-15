@@ -13,25 +13,38 @@ $serial->sendMessage("G1234567890;");
 
 usleep(1000);
 
-$serial->serialFlush();
+//$serial->serialFlush();
 
 while (1==1)
 {
-	while (($read = $serial->readPort()) == ""  );
-	echo "AAA".$read;
+	$read="";
+	$return="";
+	while ($read!="\n"){
+		//echo "B";
+		while (($read = $serial->readPort()) == ""  ){
+			usleep(10);
+		}
+
+		//echo $read.'\n';
+		$return .= $read;
+	}
+
+	echo "return is: ".$return."\n";
 
 	$value = "XX";
-	$value[0] = $read[0];
-	$value[1] = $read[1];
+	$value[0] = $return[0];
+	$value[1] = $return[1];
 
-	$ts = substr ($read, 2, strlen($read));
+	$ts = substr ($return, 3, strlen($return)-6);
 
         list($usec, $sec) = explode(" ", microtime());
         $tsn = (string) ((float)$usec + (float)$sec);
 
-
+	echo "ts: $ts : ".((float) $ts)."\n";
+	echo "nts: $tsn \n";
 	$rtt = (float) $tsn - (float) $ts;
 
+	echo "RTT: ".$rtt."\n";
 	setNodeData(1,(int) $value,$rtt);
 	
 
