@@ -65,7 +65,7 @@ function getQueueLengthByNodeId($queueLen){
 
 function getNodeDataByNodeId($nodeId){
 
- $sql="select NodeId,QueueLength,Timestamp,ResponseTime from NodeData where NodeId='".$nodeId."'";
+ $sql="select NodeId,QueueLength,Timestamp,ResponseTime from NodeData where NodeId='".$nodeId."' ORDER BY Timestamp DESC";
  $result=mysql_query($sql);
  return $result;
 }
@@ -73,6 +73,12 @@ function getNodeDataByNodeId($nodeId){
 function getNodeAttrByNodeId($nodeId){
 
  $sql="select Attribute from NodeAttr where NodeId='".$nodeId."'";
+ $result=mysql_query($sql);
+ return $result;
+}
+
+function dropNodeData(){
+ $sql="truncate table NodeData";
  $result=mysql_query($sql);
  return $result;
 }
