@@ -4,9 +4,8 @@
 
 function connect() {
                require_once 'dbconfig.php';
-               //$mydbh=mysql_connect($ip, $username, $password)or die("Could not connect: ".mysql_error());
-               $mydbh=mysql_connect("127.0.0.1", "root", "root")or die("Could not connect: ".mysql_error());
-               $conn=mysql_select_db("NodeDB",$mydbh) or die(mysql_error());
+               $mydbh=mysql_connect($ip, $username, $password)or die("Could not connect: ".mysql_error());
+               $conn=mysql_select_db($database,$mydbh) or die(mysql_error());
 
                //Connect to database
                return $conn;
@@ -28,7 +27,6 @@ function getAllNodeIds(){
 
 function setNodeData($nodeId,$queueLen,$responseTime){
 
-  connect();
   $phpDate=date( 'Y-m-d H:i:s',time());
   $sql="insert into NodeData (`NodeId`,`QueueLength`,`Timestamp`,`ResponseTime`) values('$nodeId','$queueLen','$phpDate','$responseTime')";
   $result=mysql_query($sql) or die(mysql_error());
@@ -65,7 +63,7 @@ function getQueueLengthByNodeId($queueLen){
 
 function getNodeDataByNodeId($nodeId){
 
- $sql="select NodeId,QueueLength,Timestamp,ResponseTime from NodeData where NodeId='".$nodeId."'";
+ $sql="select NodeId,QueueLength,Timestamp,ResponseTime from NodeData where NodeId='".$nodeId."' order by Timestamp desc";
  $result=mysql_query($sql);
  return $result;
 }
