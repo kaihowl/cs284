@@ -40,6 +40,13 @@ function getNodeIdsByFloorNumber($floorNumber){
  return $result;
 }
 
+function getMacAddrByNodeId($nodeId){
+
+ $sql="select NodeMacAddr from Nodes where NodeId='".$nodeId."'";
+ $result=mysql_query($sql);
+ return $result;
+}
+
 function getNodeIdByMacAddr($macAddr){
 
  $sql="select NodeId from Nodes where NodeMacAddr='".$macAddr."'";
