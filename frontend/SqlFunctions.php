@@ -83,4 +83,9 @@ function getAvgResponseTime($nodeId){
 
 }
 
+function dropNodeData($nodeId){
+ $sql="TRUNCATE TABLE NodeData";
+ $result=mysql_query($sql);
+}
+
 ?>

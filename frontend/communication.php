@@ -19,6 +19,8 @@ function prepare_packet($nodeId)
 
 	list($usec, $sec) = explode(" ", microtime());
     	$ts = (string) ((float)$usec + (float)$sec);
+	if($ts < 100000000)
+		echo "ERROR: timestamp in frontend/communication.php:prepare_packet() is not correct: ".$ts;
 	$packet = "G" . $ts . ";";
 	
 	echo $packet;
@@ -58,6 +60,5 @@ function comm_recv_down ($packet)
 	return 1;
 }
 
-comm_recv_up (1);
 
 ?>

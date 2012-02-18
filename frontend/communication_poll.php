@@ -3,6 +3,8 @@
 include ("php-serial-read-only/php_serial.class.php");
 include ("SqlFunctions.php");
 
+connect();
+
 $serial = new phpSerial();
  
 $serial->deviceSet("/dev/ttyUSB0");
@@ -11,7 +13,7 @@ $serial->deviceOpen();
 
 $serial->sendMessage("G1234567890;");
 
-usleep(1000);
+//usleep(1000);
 
 //$serial->serialFlush();
 
@@ -25,7 +27,7 @@ while (1==1)
 			usleep(10);
 		}
 
-		//echo $read.'\n';
+		echo $read.'\n';
 		$return .= $read;
 	}
 
@@ -44,8 +46,9 @@ while (1==1)
 	echo "nts: $tsn \n";
 	$rtt = (float) $tsn - (float) $ts;
 
-	echo "RTT: ".$rtt."\n";
-	setNodeData(1,(int) $value,$rtt);
+	echo "RTT: ".$rtt."\n\n\n";
+	if($rtt < 1000.0 & $rtt > 0.0)
+		setNodeData(1,(int) $value,$rtt);
 	
 
 }
