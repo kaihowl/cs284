@@ -1,5 +1,6 @@
 <?php
 require_once("SqlFunctions.php");
+require_once("communication.php");
 connect();
 ?>
 
@@ -7,7 +8,7 @@ connect();
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Cloud Hosting</title>
+<title>WSN</title>
 
 <link rel="stylesheet" type="text/css" href="demo1.css" />
 
@@ -21,9 +22,13 @@ $result =getAllNodeIds();
 $num_rows=mysql_num_rows($result);
 $row=mysql_fetch_array($result);
 
+if(isset($_GET['qid']))
+{
+comm_recv_up($_GET['qid']);
+}
     echo "<table id='table1' >";
       echo"<caption>Status</caption>";
-      echo "<tr  valign='top'><td class='header'><b>Node Id</b></td><td class='header'><b>Node Name</b> </td><td class='header'><b>Node MacAddress</b></td><td class='header'><b>Floor Number</b></td></tr>";
+      echo "<tr  valign='top'><td class='header'><b>Node Id</b></td><td class='header'><b>Node Name</b> </td><td class='header'><b>Node MacAddress</b></td><td class='header'><b>Floor Number</b></td><td class='header'><b>Query</b></td></tr>";
       for($i=0;$i<$num_rows;$i++)
       {
        if($i%2){
@@ -31,7 +36,7 @@ $row=mysql_fetch_array($result);
        }else{
        echo "<tr class='odd'>";
        }
-        echo "<td class='data'><a href=?id=".$row['NodeId'].">".$row['NodeId']."</a></td><td class='data'>".$row['NodeName']."</td><td class='data'>".$row['NodeMacAddr']."</td><td class='data'>".$row['FloorNumber']."</td></tr>";
+        echo "<td class='data'><a href=?id=".$row['NodeId'].">".$row['NodeId']."</a></td><td class='data'>".$row['NodeName']."</td><td class='data'>".$row['NodeMacAddr']."</td><td class='data'>".$row['FloorNumber']."</td><td class='data'><a href=?qid=".$row['NodeId'].">Get Queue Length</a></td></tr>";
 $row=mysql_fetch_array($result);
       }
        echo "</table>";
