@@ -2,24 +2,66 @@
 
 require("communication.php");
 
-//$packet = chr(hexdec("7e")).chr(hexdec("00")).chr(hexdec("04")).chr(hexdec("08")).chr(hexdec("52")).chr(hexdec("4e")).chr(hexdec("4a")).chr(hexdec("0d"));
-
-$packet = chr(hexdec("7e")).
-	chr(hexdec("00")).chr(hexdec("16")).
-	chr(hexdec("10")).
-	chr(hexdec("01")).
-	chr(hexdec("00")).chr(hexdec("13")).chr(hexdec("A2")).chr(hexdec("00")).chr(hexdec(40)).chr(hexdec("81")).chr(hexdec("3d")).chr(hexdec("35")).
-	chr(hexdec("FF")).chr(hexdec("FE")).
-	chr(hexdec("00")).
-	chr(hexdec("00")).
-	"G111111;".
-	//chr(hexdec("54")).chr(hexdec("78")).chr(hexdec("44")).chr(hexdec("61")).chr(hexdec("74")).chr(hexdec("61")).chr(hexdec("30")).chr(hexdec("41")).
-	chr(hexdec("61"));
-
-echo $packet;
-
+$packet = assemble_packet("0013a20040813d35", "G1111;", "01");
+echo strToHex($packet);
 transmit($packet);
 
+function assemble_packet($destination, $payload, $frameid="01")
+{
+	$packet = "";
+	$packet .= hexToStr("7e00");
+	$length = dechex( 14 + strlen($payload) );
+	$packet .= hexToStr($length);
+	$packet .= hexToStr("10");
+	$packet .= hexToStr($frameid);
+	$packet .= hexToStr($destination);
+	$packet .= hexToStr("FFFE");
+	$packet .= hexToStr("0000");
+	$packet .= $payload;
+	$packet .= chr(my_checksum($packet));
+
+	return $packet;
+} 
+
+function my_checksum($packet){
+
+	$sum = 0;
+	for($i=3;$i<strlen($packet);$i++)
+	{
+		$sum += ord($packet[$i]);
+	}
+
+	$sum = $sum & 0xFF;
+
+	return 0xFF-$sum;
+}
+
+function hexToStr($hex)
+{
+    $string='';
+    for ($i=0; $i < strlen($hex)-1; $i+=2)
+    {
+        $string .= chr(hexdec($hex[$i].$hex[$i+1]));
+	
+    }
+
+    return $string;
+}
+
+function strToHex($string)
+{
+    $hex='';
+    for ($i=0; $i < strlen($string); $i++)
+    {
+        $thex = dechex(ord($string[$i]));
+	if ( strlen($thex) == 1){
+		$thex[1] = $thex[0];
+		$thex[0] = "0";
+	}
+	$hex .= $thex;
+    }
+    return $hex;
+}
 
 ?>
 
