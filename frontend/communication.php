@@ -23,7 +23,6 @@ function prepare_packet($nodeId)
 		echo "ERROR: timestamp in frontend/communication.php:prepare_packet() is not correct: ".$ts;
 	$packet = "G" . $ts . ";";
 	
-	echo $packet;
 	return $packet;
 }
 
