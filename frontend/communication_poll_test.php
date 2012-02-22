@@ -11,7 +11,7 @@ $serial->deviceSet("/dev/ttyUSB0");
 
 $serial->deviceOpen();
 
-$serial->sendMessage("G1234567890;");
+//$serial->sendMessage("G1234567890;");
 
 //usleep(1000);
 
@@ -61,6 +61,7 @@ while (1==1)
 	//}
 
 	echo "return is: ".$return."\n";
+	echo "is is: ".strToHex($return)."\n";
 
 	$value = "XX";
 	$value[0] = $return[0];
