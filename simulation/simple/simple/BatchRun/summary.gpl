@@ -1,0 +1,5 @@
+set terminal png font "/Library/Fonts/Arial\ Unicode.ttf" size 500,300
+set title "Polling time vs. network longevity (3 end nodes with 1 request\&response/sec/node)"
+set xlabel "Polling time [ms]"
+set ylabel "Battery life improvement over 50ms polling [factor]"
+plot 'summary.dat' using 1:($2/140509.6667) title 'Avg improvement relative to 50ms polling' with lines, 'summary.dat' using 1:($2/140509.6667):($3/140509.6667):($4/140509.6667) title "Max, avg, min improvement" with errorbars 
