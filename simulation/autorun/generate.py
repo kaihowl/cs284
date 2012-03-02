@@ -4,7 +4,7 @@ import shutil
 
 def gen_config(sleep):
 	return """
-	# ***** QualNet Configuration File *****
+  # ***** QualNet Configuration File *****
 
 
   #********************General Settings***********************************
@@ -325,8 +325,8 @@ def gen_config(sleep):
 
   #********************ROUTING PROTOCOL***********************************
 
-  [ N8-190.0.3.0 ] ROUTING-PROTOCOL AODV
-  [ N8-190.0.3.0 ] AODV-PROCESS-HELLO NO
+  [ N8-190.0.3.0 ] ROUTING-PROTOCOL NONE
+
 
 
   #********* [Default Wireless Subnet] ***********************************
@@ -356,13 +356,16 @@ def gen_config(sleep):
   #******************Node Configuration***********************************
 
 
+  [1 thru 4]      STATIC-ROUTE YES
   [1]             HOSTNAME host1
   [2]             HOSTNAME host2
   [3]             HOSTNAME host3
   [4]             HOSTNAME host4
   [1]             GUI-NODE-2D-ICON /Users/kai/Documents/Studium/UCSB/CS284/Qualnet/snt/qualnet/5.1/gui/icons/HUB.png
+  [1 thru 4]      ROUTING-PROTOCOL NONE
   [1 thru 4]      BATTERY-MODEL-STATISTICS YES
   [1 thru 4]      NODE-PLACEMENT FILE
+  [1 thru 4]      STATIC-ROUTE-FILE /Users/kai/Documents/Studium/UCSB/CS284/repo/cs284/simulation/autorun/template/template.routes-static
   NODE-POSITION-FILE template.nodes
   GUI-ANNOTATION-CONFIG-FILE template.ann
 
@@ -370,7 +373,6 @@ def gen_config(sleep):
 
   GUI-DISPLAY-SETTINGS-FILE template.display
 
-  
   """.format(sleep)
   
 #workload in req/min/node

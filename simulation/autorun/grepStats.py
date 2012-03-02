@@ -13,6 +13,16 @@ def grep_workload(file):
     if line.find("SUPER-APPLICATION")>0:
       return int(line.split()[13])/15
       
+def grep_delay(file):
+  delays = []
+  for line in file:
+    if line.find("Average End-to-End Delay for request received (s)")>0:
+      delays.append(float(line.split()[10]))
+  average = sum(delays)/len(delays)
+  minDelay = min(delays)
+  maxDelay = max(delays)
+  return (average, minDelay, maxDelay)
+
 if __name__=="__main__":
   os.chdir("batch/")
   start = int(sys.argv[1])
@@ -20,7 +30,10 @@ if __name__=="__main__":
   for i in xrange(start, end):
     config= open("%i/template.config" % i)
     app = open("%i/template.app" % i)
-    print "poll: %i workload: %i" % (grep_polltime(config), grep_workload(app))
-  
+    stat = open("%i/Experiment-2.stat" % i)
+    print "poll: %i workload: %i delaysStat: %s" % (grep_polltime(config), grep_workload(app), str(grep_delay(stat)))
+    config.close()
+    app.close()
+    stat.close()
 
   
