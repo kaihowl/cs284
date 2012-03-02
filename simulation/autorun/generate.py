@@ -384,7 +384,7 @@ def gen_app(workload):
   """.format(num_packets, freq)
   
 def gen(workload, sleep, number):
-  shutil.copytree("template", str(number))
+  shutil.copytree("../template", str(number))
   
   with open("%i/template.config"%number, "w") as f:
     f.write(gen_config(sleep))
