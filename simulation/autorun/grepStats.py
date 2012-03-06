@@ -27,13 +27,38 @@ if __name__=="__main__":
   os.chdir("batch/")
   start = int(sys.argv[1])
   end = int(sys.argv[2])
+  graph1_file = open("graph1.tab", "w")
+  graph2_file = open("graph2.tab", "w")
+  graph3_file = open("graph3.tab", "w")
+  
+  #header
+  for file in [graph1_file, graph2_file, graph3_file]:
+    file.write("poll\tdelay\tmin\tmax\n")
+  
   for i in xrange(start, end):
     config= open("%i/template.config" % i)
     app = open("%i/template.app" % i)
     stat = open("%i/Experiment-2.stat" % i)
-    print "poll: %i workload: %i delaysStat: %s" % (grep_polltime(config), grep_workload(app), str(grep_delay(stat)))
+    # print "poll: %i workload: %i delaysStat: %s" % (grep_polltime(config), grep_workload(app), str(grep_delay(stat)))
+    workload = grep_workload(app)
+    if workload == 50:
+      outfile = graph1_file
+    elif workload == 100:
+      outfile = graph2_file
+    elif workload == 200:
+      outfile = graph3_file
+    else:
+      sys.exit("Unkown workloads")
+    
+    avg, minDel, maxDel = grep_delay(stat)
+    outfile.write("%i\t%.3f\t%.3f\t%.3f\n" % (grep_polltime(config), avg, minDel, maxDel))
+
     config.close()
     app.close()
     stat.close()
+  
+  graph1_file.close()
+  graph2_file.close()
+  graph3_file.close()
 
   

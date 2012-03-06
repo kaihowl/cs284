@@ -1,0 +1,12 @@
+#set terminal png font "/Library/Fonts/Arial\ Unicode.ttf" size 500,300
+#set title "Polling time vs. network longevity (3 end nodes with 1 request\&response/sec/node)"
+# set nokey
+set dgrid3d 100,100
+set view 180,0
+set style data lines
+# set zlabel "End-to-end avg(/min/max) request delay [s]"
+unset ztics
+set ylabel "Workload [reqs/min/node]"
+set xlabel  "Poll time [ms]"
+set pm3d
+splot 'batch/graph.tab' using 1:2:3 pal title "Request delay in s"

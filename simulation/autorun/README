@@ -1,1 +1,5 @@
 This will generate the batch generation for the different graphs we need
+
+1: workload slices: Delay vs sleeping time (whereas sleeping time is in [50ms;10s; 50ms]+20ms time). Workload is either 50, 100, 200 req/min/end-node.
+2: sleeptime slices: Delay vs. workload (whereas workload in req/min/end-node is in [50;600;50]). Sleeping time is either 20ms, 100ms, 500ms, or 1s
+3: full 3d view

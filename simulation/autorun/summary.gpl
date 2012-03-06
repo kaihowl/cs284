@@ -1,0 +1,11 @@
+#set terminal png font "/Library/Fonts/Arial\ Unicode.ttf" size 500,300
+#set title "Polling time vs. network longevity (3 end nodes with 1 request\&response/sec/node)"
+# set nokey
+set xlabel "Polling time [ms]"
+set ylabel "End-to-end avg(/min/max) request delay [s]"
+set style line 1 linecolor rgb 'blue'
+set style line 2 linecolor rgb 'red'
+set style line 3 linecolor rgb 'green'
+plot 'batch/graph1.tab' using 1:2 title '50 reqs/min/node' with lines ls 1, 'batch/graph1.tab' using 1:2:3:4 notitle with errorbars ls 1, \
+'batch/graph2.tab' using 1:2 title '100 reqs/min/node' with lines ls 2, 'batch/graph2.tab' using 1:2:3:4 notitle with errorbars ls 2, \
+'batch/graph3.tab' using 1:2 title '200 reqs/min/node' with lines ls 3, 'batch/graph3.tab' using 1:2:3:4 notitle with errorbars ls 3
