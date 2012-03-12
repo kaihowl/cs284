@@ -1,0 +1,5 @@
+set title "3 end nodes w/o traffic"
+set terminal png font "/Library/Fonts/Arial\ Unicode.ttf" size 500,300
+set xlabel "Polling time [ms]"
+set ylabel "Battery Life Improvement [factor]"
+plot 'summary.dat' using 1:($2/38108.5) title 'Avg improvement relative to 10ms polling' with lines, 'summary.dat' using 1:($2/38108.5):($3/38108.5):($4/38108.5) title "Max, avg, min improvement" with errorbars 
