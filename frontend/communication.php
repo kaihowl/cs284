@@ -6,14 +6,18 @@ require("util.php");
 This function should be called from the query processor.
 It specify the node_id that is needed for a sensor read.
 */
-function comm_recv_up ($nodeId)
+function comm_recv_up ($nodeId, $from_browser=false)
 {
-	//echo "received a request for: ".$nodeId."\n<br>";
-	$packet = prepare_packet($nodeId);
-	transmit ($packet);
-	add_to_waiting_queue($nodeId);
+	if (!$from_browser){
+		//echo "received a request for: ".$nodeId."\n<br>";
+		$packet = prepare_packet($nodeId);
+		transmit ($packet);
+		add_to_waiting_queue($nodeId);
 
-	return 1;
+		return 1;
+	}else{
+		exec ("sudo ./browser_ask.sh ".$nodeId);
+	}
 }
 
 function prepare_packet($nodeId)

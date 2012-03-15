@@ -24,7 +24,7 @@ $row=mysql_fetch_array($result);
 
 if(isset($_GET['qid']))
 {
-comm_recv_up($_GET['qid']);
+comm_recv_up($_GET['qid'], true);
 }
     echo "<table id='table1' >";
       echo"<caption>Status</caption>";

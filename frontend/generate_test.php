@@ -3,8 +3,15 @@
 require ("SqlFunctions.php");
 require ("communication.php");
 
-$number_of_requests = 300;
-$mean_interarrival  = 100000.0; // in usec
+$number_of_requests = $argv[1];
+$mean_interarrival  = (float) $argv[2]; // in msec
+$number_of_nodes    = $argv[3];
+
+if ($argc != 4)
+{
+	echo "USAGE: > php generate-test.php number_of_requests mean_interarrival number_of_nodes\n";
+	exit();
+}
 
 // 1. empty DB
 connect();
@@ -14,9 +21,9 @@ dropNodeData();
 for ( $i=0 ; $i<$number_of_requests ; $i++ )
 {
 	echo $i.".";
-	comm_recv_up(rand(1, 2));	
-	usleep(rand ( $mean_interarrival, $mean_interarrival+700000 ));
+	comm_recv_up(rand(1, $number_of_nodes));	
+	usleep( 1000.0*getExpRand($mean_interarrival) );
 
 }
 
-
+?>

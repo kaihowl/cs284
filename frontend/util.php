@@ -1,5 +1,13 @@
 <?php
 
+function getExpRand($mean)
+{
+	$temp = `echo "exprnd ($mean)" | octave | grep ans`;
+	list ($gar1, $value) = split ("=", $temp);
+	return (float) $value;
+
+}
+
 function hexToStr($hex)
 {
     $string='';
