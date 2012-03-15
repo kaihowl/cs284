@@ -1,0 +1,49 @@
+\section{Modeling QoS}\label{sec:model}
+
+\subsection{Modeling a network vs. modeling a node}
+
+\subsection{QoS model}
+In this section, we will develop a model of delay and queue utilization of our system. We will use an M/G/1 queue model with vacations. As we demonstrated above, we can treat every node in isolation. We denote the amount of incoming traffic to the node by $\lambda$. The distribution of interarrival times, $A(t)$, is exponential and calculated as the following:
+\begin{equation}
+A(t) = 1 - e^{-\lambda\ t}
+\end{equation}
+Where the mean is $\frac{1}{\lambda}$. Since we are dealing with standard queries, we assume that packet sizes are fixed. Figure~\ref{fig:packet_size} shows the contents of transmitted and received frames. The service time is the time required to service the packet in the head of the queue. 
+This value is dependent on the contention of the medium, the time required to successfully send the packet to the coordinator. We assume that the process of collecting data in addition to internal processing is negligible.
+
+We start by observing the waiting time. It is the summation of time spent in the queue in addition to the service time, given by
+\begin{equation}
+W = R + \sum_{j \in queue} X_j
+\end{equation}
+where $R$ is the residual service time seen by an arriving query and $X_j$ is the service time for query $j$. Taking expectations we have
+\begin{equation}
+W = R + \bar{X}N_q
+\end{equation}
+where $N_q$ is the average queue utilization. Using Little's Formula~\cite{Littles} we arrive to the following
+\begin{equation}
+\label{eq:waiting}
+W = \frac{R}{1 - \rho}
+\end{equation}
+where $\rho$ is the traffic intensity equal to $\lambda\bar{X}$. Thus, we need to find an expression for the average residual time seen by an incoming query. This can be obtained by calculating the average of residual times in a time interval $[0, t]$
+\begin{equation}
+\frac{1}{t} \int_0^t r(\tau) d\tau
+\end{equation}
+where $r(\tau)$ is the residual time at time $\tau$. The integral is the summation of the contribution of each service time in the considered time interval. The contribution of each service time is half the square of that query's service time. The same is applied to vacations, where the contribution of each vacation period is half the square of that query's service time. This is demonstrated as the following:
+\begin{equation}
+\frac{1}{t} \int_0^t r(\tau) d\tau = \frac{1}{t} \sum_{i \in S(0,t)} \frac{X_i^2}{2} + \frac{1}{t} \sum_{i \in V(0,t)} \frac{V_i^2}{2}
+\end{equation}
+where $S(0,t)$ and $V(0,t)$ are the set of serviced queries and vacations in the time period $[0, t]$, respectively, and $V_i$ is the vacation time. Solving the summation and taking the limit of $t$ approaching infinity we obtain
+\begin{equation}
+\label{eq:residual}
+R = \frac{\lambda\bar{X^2}}{2} + \frac{(1-\rho)\bar{V^2}}{2\bar{V}}
+\end{equation}
+Substituting Equation~\ref{eq:residual} in Equation~\ref{eq:waiting} gives us
+\begin{equation}
+\label{eq:waiting_2}
+W = \frac{\lambda\bar{X^2}}{2 (1-\rho)} + \frac{\bar{V^2}}{2\bar{V}}
+\end{equation}
+In this relation, $\bar{X^2}$ is the only unknown. The second expectation is given as the sum of variance and squared mean. Thus, we need to find them out. First, we have to derive a formula to describe the service time. We assume that channel contention dominates specifying this value. Also, we assume that nodes are backloged. This is a valid assumption sense we will be having vacation periods, hence maximizing sleeping lead to the existence of queries to be answered. Since contention is the factor we are considering for service time, we can derive the service time as the inverse of steady-state throughput. We use the model given in~\cite{802.15.4_model}. In it throughput is calculated as
+\begin{equation}
+\label{eq:throughput}
+A looooong equation
+\end{equation}
+where \ldots. This relation assumes that all nodes are in interference range to each other /* unless reference 13 */. We, however, need to modify this relation to account for sleeping nodes.
