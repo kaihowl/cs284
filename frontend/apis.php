@@ -39,7 +39,7 @@ function assemble_at_packet($destination, $payload, $frameid="01")
         return $packet;
 }
 
-set_command(1, ("ST".hexToStr("66")) );
+set_command(1, ("SP".hexToStr($argv[1])) );
 
 
 ?>
