@@ -3,3 +3,8 @@ This will generate the batch generation for the different graphs we need
 1: workload slices: Delay vs sleeping time (whereas sleeping time is in [50ms;10s; 50ms]+20ms time). Workload is either 50, 100, 200 req/min/end-node.
 2: sleeptime slices: Delay vs. workload (whereas workload in req/min/end-node is in [50;600;50]). Sleeping time is either 20ms, 100ms, 500ms, or 1s
 3: full 3d view
+4: Run matrix with sleeping time in [20ms;1500;5ms] and workload in [50;600;50].
+5: Run matrix with sleeping time in [20ms;1500;5ms] and workload in [50;300;5] with exponential arrivals
+6: Do 5 with only a single node
+7: Single node with sleeping time in [20ms;6000;20ms] and workload in [50;300;20] with exponential arrivals
+8: Single node with sleeping time in [20ms;2000;20ms] and workload in [300;12300;1000] with exponential arrivals
