@@ -1,17 +1,5 @@
 \begin{thebibliography}{10}
 
-\bibitem{17}
-Arduino.
-\newblock \url{http://www.arduino.cc}.
-
-\bibitem{16}
-Scalable networks technologies.
-\newblock \url{http://www.scalable-networks.com}.
-
-\bibitem{18}
-Xbee.
-\newblock \url{http://www.digi.com/xbee}.
-
 \bibitem{19}
 {\em XBee RF Module -- Product Manual}, v1.xex edition.
 \newblock \url{http://ftp1.digi.com/support/documentation/90000982_B.pdf}.
@@ -47,12 +35,6 @@ B.~Bougard, F.~Catthoor, D.C. Daly, A.~Chandrakasan, and W.~Dehaene.
 \newblock In {\em Design, Automation and Test in Europe, 2005. Proceedings},
   pages 196 -- 201 Vol. 1, march 2005.
 
-\bibitem{20}
-B.~T. Doshi.
-\newblock Queueing systems with vacations --- a survey.
-\newblock {\em Queueing Systems}, 1:29--66, 1986.
-\newblock 10.1007/BF01149327.
-
 \bibitem{12}
 Rick~W. Ha, Pin-Han Ho, and Xuemin~Sherman Shen.
 \newblock Optimal sleep scheduling with transmission range assignment in
@@ -71,11 +53,6 @@ C.Y. Jung, H.Y. Hwang, D.K. Sung, and G.U. Hwang.
   csma/ca for ieee 802.15.4 under unsaturated traffic conditions.
 \newblock {\em Vehicular Technology, IEEE Transactions on}, 58(1):473 --478,
   jan. 2009.
-
-\bibitem{21}
-Leonard Kleinrock.
-\newblock {\em Theory, Volume 1, Queueing Systems}.
-\newblock Wiley-Interscience, 1975.
 
 \bibitem{7}
 Dilip Kumar, Trilok~C. Aseri, and R.B. Patel.
@@ -101,11 +78,6 @@ A.~Manjeshwar, Qing-An Zeng, and D.P. Agrawal.
   networks using enhanced apteen protocol.
 \newblock {\em Parallel and Distributed Systems, IEEE Transactions on},
   13(12):1290 -- 1302, dec 2002.
-
-\bibitem{3}
-S.~Middleton.
-\newblock Ieee 802.15 wpan low rate study group par.
-\newblock Technical Report doc. number IEEE P802.15-00/248r3, IEEE, 2002.
 
 \bibitem{9}
 E.~D.~N. Ndih, N.~Khaled, and G.~De~Micheli.
