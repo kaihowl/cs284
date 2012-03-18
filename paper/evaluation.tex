@@ -37,10 +37,32 @@ Another observation is that although the service time values are increasing prio
 \label{fig:1node}
 \end{figure}
 
-\subsection{Sleep time dominance}
-In this section we will demonstrate the behavior of low load scenario; We observe how a small value of service time can make the wait time derivable from the sleeping time only. First, we show a baseline case for a topology with one end-node in Figure~\ref{fig:1node}. In this scenario, the channel does not saturate and the service times are always small, rendering wait times to be dominated by sleep times. Therefore, the different in workloads is not observed and all plots overlap with the model.
+\begin{figure}[t]
+\centering
+\includegraphics[scale=0.65]{figures/sleep_model_2nodes.eps}
+\caption{Comparing wait times for a 2-node network with upper and lower bounds obtained through model}
+\label{fig:wait_times_2nodes}
+\end{figure}
+
+
+\subsection{Model validation}
+In this section we will demonstrate the behavior of low load scenario; We observe how a small value of service time can make the wait time derivable from the sleeping time only. First, we show a baseline case for a topology with one end-node in Figure~\ref{fig:1node}. In this scenario, the channel does not saturate and the service times are always small, rendering wait times to be dominated by sleep times. Therefore, the different in workloads is not observed and all plots overlap with the model. Now, we show a scenario with two end-nodes and show how the model predict behavior when sleep times approach saturation point. Figure~\ref{fig:wait_times_2nodes} shows these results.
+
+\begin{figure}[t]
+\centering
+\includegraphics[scale=0.65]{figures/1node_both.eps}
+\caption{Comparing wait times of simulation, prototype, and model for a single node network}
+\label{fig:1node_both}
+\end{figure}
 
 \subsection{prototype evaluation}
+Now we will display results obtained from our model to demonstrate its behavior in accordance to our model. In Figure~\ref{fig:1node_both} the results of a single-node prototype is compared to simulation and model. The same behavior is experienced by both node. However, the longer overhead of polling for the prototype makes the wait times larger. 
+
+
 
 
 \subsection{Assigning sleeping times}
+
+
+
+
