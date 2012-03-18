@@ -78,7 +78,8 @@ while (1==1)
 
 	echo "RTT: ".$rtt."\n\n\n";
 	$nodeID = 1;
-	if ($value < 50) $nodeID = 2;
+	if ($value < 50 & $value >= 40) $nodeID = 2;
+	if ($value < 40) $nodeID = 3;
 	if($rtt < 10000.0 & $rtt > 0.0)
 		setNodeData($nodeID,(int) $value,$rtt);
 	

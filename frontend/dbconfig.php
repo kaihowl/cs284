@@ -4,4 +4,3 @@ $database="NodeDB";
 $username="root";
 $password="root";
 ?>
-

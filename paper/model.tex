@@ -1,9 +1,6 @@
-\section{Modeling QoS}\label{sec:model}
+\section{Modeling wait time}\label{sec:model}
 
-\subsection{Modeling a network vs. modeling a node}
-
-\subsection{QoS model}
-In this section, we will develop a model of delay and queue utilization of our system. We will use an M/G/1 queue model with vacations. As we demonstrated above, we can treat every node in isolation. We denote the amount of incoming traffic to the node by $\lambda$. The distribution of interarrival times, $A(t)$, is exponential and calculated as the following:
+In this section, we will develop a model of delay and queue utilization of our system. We will use an M/G/1 queue model with vacations. We denote the amount of incoming traffic to the network by $\lambda$. The distribution of interarrival times, $A(t)$, is exponential and calculated as the following:
 \begin{equation}
 A(t) = 1 - e^{-\lambda\ t}
 \end{equation}
@@ -41,9 +38,5 @@ Substituting Equation~\ref{eq:residual} in Equation~\ref{eq:waiting} gives us
 \label{eq:waiting_2}
 W = \frac{\lambda\bar{X^2}}{2 (1-\rho)} + \frac{\bar{V^2}}{2\bar{V}}
 \end{equation}
-In this relation, $\bar{X^2}$ is the only unknown. The second expectation is given as the sum of variance and squared mean. Thus, we need to find them out. First, we have to derive a formula to describe the service time. We assume that channel contention dominates specifying this value. Also, we assume that nodes are backloged. This is a valid assumption sense we will be having vacation periods, hence maximizing sleeping lead to the existence of queries to be answered. Since contention is the factor we are considering for service time, we can derive the service time as the inverse of steady-state throughput. We use the model given in~\cite{802.15.4_model}. In it throughput is calculated as
-\begin{equation}
-\label{eq:throughput}
-A looooong equation
-\end{equation}
-where \ldots. This relation assumes that all nodes are in interference range to each other /* unless reference 13 */. We, however, need to modify this relation to account for sleeping nodes.
+In this relation, $\bar{X^2}$ is the only unknown. The second expectation is given as the sum of variance and squared mean. As we reviewed in the related work section, many solutions were proposed to solve the problem of finding the service time for CSMA/CA protocols. However, we face a novel problem for finding the service time of our framework that was not tackled for sensor networks to the best of the authors knowledge. In our framework, the sleeping agent is disperate from the queueing agent. Furthermore, the service time incur the transmission from the front-end which occur in batches, processing and queueing in the backend, and finally transmitting the requested value back to the front end. This introduces complexity into figuring out the service time as a closed-form solution and it remain as an open question worthy of investigation. We take a step into this investigation and take an unconventional mean into determining the service time, hence an experimental approach. We will provide our approach, methodology, and findings in the evaluation section. In it we propose an experimental approximation methodolog and prove its validity through experiments.
+

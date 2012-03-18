@@ -90,6 +90,13 @@ function getAvgResponseTime($nodeId){
 
 }
 
+function getNumDatapoints($nodeId){
+  $sql="select ResponseTime from NodeData where NodeId='".$nodeId."'";
+ $result=mysql_query($sql);
+ $num=mysql_num_rows($result);
+ return $num;
+}
+
 function dropNodeData($nodeId){
  $sql="TRUNCATE TABLE NodeData";
  $result=mysql_query($sql);

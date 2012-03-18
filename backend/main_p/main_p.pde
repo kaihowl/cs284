@@ -61,6 +61,6 @@ String getReading (String type)
 {
  // we assume  
  String ret = "";
- ret = random (50, 55);
+ ret = random (40, 45);
  return ret;
 }

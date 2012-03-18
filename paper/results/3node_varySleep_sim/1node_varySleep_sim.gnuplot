@@ -3,7 +3,7 @@
 set terminal postscript "Helvetica" 20
 set terminal postscript color
 set terminal postscript eps enhanced
-set output '3node_varySleep_sim.eps'
+set output '3node_varySleep_sim_large.eps'
 
 #set yrange [0:9500000]
 

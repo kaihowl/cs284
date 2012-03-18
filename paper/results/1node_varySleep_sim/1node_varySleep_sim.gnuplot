@@ -15,4 +15,5 @@ set key left
 
 plot "data" using 1:2 every 5 title col with linespoints lt -1,\
 "" using 1:3 every 5 title col with linespoints lt -1,\
-"" using 1:4 every 5 title col with linespoints lt -1
+"" using 1:4 every 5 title col with linespoints lt -1,\
+x/2.0 title "model" with linespoints lt -1
