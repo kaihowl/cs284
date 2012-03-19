@@ -9,3 +9,6 @@ This will generate the batch generation for the different graphs we need
 7: Single node with sleeping time in [20ms;6000;20ms] and workload in [50;300;20] with exponential arrivals
 8: Single node with sleeping time in [20ms;2000;20ms] and workload in [300;12300;1000] with exponential arrivals
 9: Two end nodes with sleeping time in [20ms;6000;20ms] and workload in [50;300;20] with exponential arrivals
+10: single end node with sleeping time as 320, 640, 960 and workload in [60; 6060; 5] with exponential arrivals
+11: five end nodes with sleeping time in [20; 6000; 20] and workload in [50;300;20] for all nodes with exponential arrivals
+12: ten end nodes with sleeping time in [20;6000;20] and workload in [50;300;20] for all nodes with exponential arrivals

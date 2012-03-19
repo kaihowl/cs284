@@ -104,7 +104,7 @@ def gen_config(sleep):
 
   #******************Supplemental Files***********************************
 
-  APP-CONFIG-FILE template_double.app
+  APP-CONFIG-FILE template_5nodes.app
   DUMMY-USER-PROFILE-FILE-NUMBER 0
   DUMMY-TRAFFIC-PATTERN-FILE-NUMBER 0
   DUMMY-ARBITRARY-DISTRIBUTION-FILE-NUMBER 0
@@ -285,7 +285,7 @@ def gen_config(sleep):
 
   #***************** [Wireless Subnet] ***********************************
 
-  SUBNET N8-190.0.3.0 {{1 thru 3}} 563.548 98.0411 0
+  SUBNET N8-190.0.3.0 {{1 thru 6}} 563.548 98.0411 0
 
   #**********************Physical Layer***********************************
 
@@ -343,6 +343,11 @@ def gen_config(sleep):
 
   [3] NETWORK-PROTOCOL[0]       IP
   [3] IP-ADDRESS[0]             190.0.3.1
+
+  [4] NETWORK-PROTOCOL[0]       IP
+  [4] IP-ADDRESS[0]             190.0.3.3
+  [5] IP-ADDRESS[0]             190.0.3.5
+  [6] IP-ADDRESS[0]             190.0.3.6
   [190.0.3.4] MAC-802.15.4-DEVICE-TYPE  FFD
   [190.0.3.4] MAC-802.15.4-FFD-MODE  PANCOORD
 
@@ -353,51 +358,57 @@ def gen_config(sleep):
   #******************Node Configuration***********************************
 
 
-  [1 thru 3]      STATIC-ROUTE YES
+  [1 thru 6]      STATIC-ROUTE YES
   [1]             HOSTNAME host1
   [2]             HOSTNAME host2
   [3]             HOSTNAME host3
+  [4]             HOSTNAME host4
+  [5]             HOSTNAME host5
+  [6]             HOSTNAME host6
   [1]             GUI-NODE-2D-ICON /Users/kai/Documents/Studium/UCSB/CS284/Qualnet/snt/qualnet/5.1/gui/icons/HUB.png
-  [1 thru 3]      ROUTING-PROTOCOL NONE
-  [1 thru 3]      BATTERY-MODEL-STATISTICS YES
-  [1 thru 3]      NODE-PLACEMENT FILE
-  [1 thru 3]      STATIC-ROUTE-FILE /Users/kai/Documents/Studium/UCSB/CS284/repo/cs284/simulation/autorun/template/template.routes-static
-  NODE-POSITION-FILE template_double.nodes
-  GUI-ANNOTATION-CONFIG-FILE template_double.ann
+  [1 thru 6]      ROUTING-PROTOCOL NONE
+  [1 thru 6]      BATTERY-MODEL-STATISTICS YES
+  [1 thru 6]      NODE-PLACEMENT FILE
+  [1 thru 6]      STATIC-ROUTE-FILE /Users/kai/Documents/Studium/UCSB/CS284/repo/cs284/simulation/autorun/template_5nodes/template_5nodes.routes-static
+  NODE-POSITION-FILE template_5nodes.nodes
+  GUI-ANNOTATION-CONFIG-FILE template_5nodes.ann
 
   #*********Miscellaneous Configuration***********************************
 
-  GUI-DISPLAY-SETTINGS-FILE template_double.display
-
-
+  GUI-DISPLAY-SETTINGS-FILE template_5nodes.display
 
   """.format(sleep)
   
 #workload in req/min/node
 def gen_app(workload):
-  num_packets = workload*15
-  freq = 60*1000/workload
+  workload_per_node = workload/5
+  num_packets = workload_per_node*15
+  freq = 60*1000/workload_per_node
   return """
   SUPER-APPLICATION 1 2 DELIVERY-TYPE UNRELIABLE START-TIME DET 1 DURATION DET 0S REQUEST-NUM DET {0} REQUEST-SIZE DET 8 REQUEST-INTERVAL EXP {1}MS REPLY-PROCESS YES REPLY-NUM DET 1 REPLY-SIZE DET 8 REPLY-PROCESS-DELAY DET 100MS REPLY-INTERDEPARTURE-DELAY DET 1S APPLICATION-NAME Measurements 
   SUPER-APPLICATION 1 3 DELIVERY-TYPE UNRELIABLE START-TIME DET 1 DURATION DET 0S REQUEST-NUM DET {0} REQUEST-SIZE DET 8 REQUEST-INTERVAL EXP {1}MS REPLY-PROCESS YES REPLY-NUM DET 1 REPLY-SIZE DET 8 REPLY-PROCESS-DELAY DET 100MS REPLY-INTERDEPARTURE-DELAY DET 1S APPLICATION-NAME Measurements 
+  SUPER-APPLICATION 1 4 DELIVERY-TYPE UNRELIABLE START-TIME DET 1 DURATION DET 0S REQUEST-NUM DET {0} REQUEST-SIZE DET 8 REQUEST-INTERVAL EXP {1}MS REPLY-PROCESS YES REPLY-NUM DET 1 REPLY-SIZE DET 8 REPLY-PROCESS-DELAY DET 100MS REPLY-INTERDEPARTURE-DELAY DET 1S APPLICATION-NAME Measurements 
+  SUPER-APPLICATION 1 5 DELIVERY-TYPE UNRELIABLE START-TIME DET 1 DURATION DET 0S REQUEST-NUM DET {0} REQUEST-SIZE DET 8 REQUEST-INTERVAL EXP {1}MS REPLY-PROCESS YES REPLY-NUM DET 1 REPLY-SIZE DET 8 REPLY-PROCESS-DELAY DET 100MS REPLY-INTERDEPARTURE-DELAY DET 1S APPLICATION-NAME Measurements 
+  SUPER-APPLICATION 1 6 DELIVERY-TYPE UNRELIABLE START-TIME DET 1 DURATION DET 0S REQUEST-NUM DET {0} REQUEST-SIZE DET 8 REQUEST-INTERVAL EXP {1}MS REPLY-PROCESS YES REPLY-NUM DET 1 REPLY-SIZE DET 8 REPLY-PROCESS-DELAY DET 100MS REPLY-INTERDEPARTURE-DELAY DET 1S APPLICATION-NAME Measurements 
+
   """.format(num_packets, freq)
   
 def gen(workload, sleep, number):
-  shutil.copytree("../template_double", str(number))
+  shutil.copytree("../template_5nodes", str(number))
   
-  with open("%i/template_double.config"%number, "w") as f:
+  with open("%i/template_5nodes.config"%number, "w") as f:
     f.write(gen_config(sleep))
   
-  with open("%i/template_double.app"%number, "w") as f:
+  with open("%i/template_5nodes.app"%number, "w") as f:
     f.write(gen_app(workload))
     
 
 if __name__ == "__main__":
-  os.chdir("batch")
+  os.chdir("batch_parallel")
   i = 0
   for workload in xrange(50, 300, 20):
     print "Starting with workload %i" % workload
-    for sleep in xrange(20, 6000, 20):
+    for sleep in xrange(20,6000,20):
       gen(workload, sleep, i)
       i+=1
   

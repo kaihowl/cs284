@@ -3,6 +3,24 @@ import os
 import shutil
 import sys
 
+def grep_mac_drop_percentage(file):
+  file.seek(0)
+  for line in file:
+    if line.find("1,               , [0],         MAC,MAC-802.15.4,Number of Packets dropped")>0:
+      dropped_num = int(line.split()[-1])
+      
+  file.seek(0)
+  for line in file:
+    if line.find("1,               , [0],         MAC,MAC-802.15.4,Number of data packets sent")>0:
+      sent_num = int(line.split()[-1])
+  return dropped_num*100/float(sent_num)
+  
+def grep_avg_queue(file):
+  file.seek(0)
+  for line in file:
+    if line.find("1,                                190.0.3.4, [0],     Network,        FIFO,Average Time In Queue")>0:
+      return float(line.split()[-1])
+
 def grep_polltime(file):
   file.seek(0)
   for line in file:
@@ -45,7 +63,7 @@ if __name__=="__main__":
   graph_file = open("graph.tab", "w")
   
   #header
-  graph_file.write("poll\tworkload\treq_delay\treq_min\treq_max\trep_delay\trep_min\trep_max\n")
+  graph_file.write("poll\tworkload\treq_delay\treq_min\treq_max\trep_delay\trep_min\trep_max\tavg_coord_queue[s]\tmac_percentage_dropped\n")
   
   percent = 0
   for i in xrange(start, end):
@@ -57,7 +75,9 @@ if __name__=="__main__":
     stat = open("%i/Experiment-2.stat" % i)
     req_avg, req_min, req_max = grep_req_delay(stat)
     rep_avg, rep_min, rep_max = grep_rep_delay(stat)
-    graph_file.write("%i\t%i\t%.3f\t%.3f\t%.3f\t%.3f\t%.3f\t%.3f\n" % (grep_polltime(config), grep_workload(app), req_avg, req_min, req_max, rep_avg, rep_min, rep_max))
+    avg_queue = grep_avg_queue(stat)
+    percentage_dropped = grep_mac_drop_percentage(stat)
+    graph_file.write("%i\t%i\t%.3f\t%.3f\t%.3f\t%.3f\t%.3f\t%.3f\t%.3f\t%.3f\n" % (grep_polltime(config), grep_workload(app), req_avg, req_min, req_max, rep_avg, rep_min, rep_max, avg_queue, percentage_dropped))
 
     config.close()
     app.close()
