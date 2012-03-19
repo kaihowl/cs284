@@ -1,9 +1,5 @@
 \section{Background}\label{sec:background}
 
-\subsection{Sensor database systems}
-%/* Review the system (Towards a sensor database is a good source \& tinyDB arch.). With an example of a query and platform/application. */
-Sensor networks are being widely deployed for measurement, detection and surveillance applications.  Related work to data processing in a wireless sensor network is TinyDB, a query processing system for extracting information from a sensor network. TinyDB provides a SQL like interface, for each input request it collects data from the nodes, filters it and sends the aggregated result to a PC via power efficient network processing algorithm. Queried data consists of sensor attributes (e.g., location) as well as sensor data. A typical monitoring scenario involves aggregate queries or correlation queries. In order to optimize the system's  performance, result of these queries are partially aggregated at each intermediate node. In our system we have implemented an interface to query on the properties such as the sensor temperature and further grouped the results on the basis of floor numbers.
-
 \begin{figure}[t]
 \centering
 \includegraphics[scale=1.2]{figures/topology.eps}
@@ -11,7 +7,6 @@ Sensor networks are being widely deployed for measurement, detection and surveil
 \label{fig:topology}
 \end{figure}
 
-\subsection{Prototype infrastructure}
 %/* speak here about arduino, XBee, ZigBee protocol, and 802.15.4 */
 A depiction of our prototype is supplied in Figure~\ref{fig:topology}. It consists of a front-end that receives external requests and delivers readings for outside users. The back-end is a collection of sensor nodes consisting of a micro-controller and a wireless module. A detailed description of used components follows:
 \begin{itemize}
