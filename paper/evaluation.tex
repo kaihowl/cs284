@@ -55,14 +55,26 @@ In this section we will demonstrate the behavior of low load scenario; We observ
 \label{fig:1node_both}
 \end{figure}
 
+\begin{figure}[t]
+\centering
+\includegraphics[scale=0.65]{figures/2node_both.eps}
+\caption{Comparing wait times of simulation, prototype, and model for a two-node network}
+\label{fig:2node_both}
+\end{figure}
+
+
 \subsection{prototype evaluation}
-Now we will display results obtained from our model to demonstrate its behavior in accordance to our model. In Figure~\ref{fig:1node_both} the results of a single-node prototype is compared to simulation and model. The same behavior is experienced by both node. However, the longer overhead of polling for the prototype makes the wait times larger. 
+Now we will display results obtained from our model to demonstrate its behavior in accordance to our model. In Figure~\ref{fig:1node_both} the results of a single-node prototype is compared to simulation and model. The same behavior is experienced by both node. However, the longer overhead of polling for the prototype makes the wait times larger. Next, we present results for a two-node network in Figure~\ref{fig:2node_both}. It is observed that the prototype acts similarily to the single-node network case, hence saturation is not achieved. However, the simulation saturated and values became much larger than the expected non-saturated case. This demonstrated the effect of channel and physical condition on the saturation point. We were not able to test for larger number of nodes in our prototype due to the lack of hardware. We howver, showed that our findings for the saturated case are observed in the prototype.
 
-
-
+\begin{figure}[t]
+\centering
+\includegraphics[scale=0.65]{figures/test_2nodes.eps}
+\caption{assigning sleep times to achieve an upper bound on wait times for networks with 2 and 3 nodes}
+\label{fig:test_2nodes}
+\end{figure}
 
 \subsection{Assigning sleeping times}
-
+In this section we will put our findings to the test. For two netowrks with 2 and 3 nodes respecively, we will calculate sleeping times that guarantee an upper bound for delay. Results are shown in Figure~\ref{fig:test_2nodes}. Having a larger number of nodes or a larger workload make the approximation more conservative, as shown in the figure. Furthermore, a larger requirement make the calculated sleeping time more conservative relatively. This is due approaching saturation which make the value of service time more effective in the calculation.
 
 
 
