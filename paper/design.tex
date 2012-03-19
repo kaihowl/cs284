@@ -29,4 +29,12 @@ We are using three Arduino Uno microcontrollers as end nodes in our prototype to
 The host connected to the XBee controller is running a LAMP-stack, i.e. a linux machine equipped with apache, MySQL, and PHP.
 /* elaborate here */
 
+\subsection{Simulation Design}
+
+The simulations are done in Qualnet 5.1. All simulations consist of one PAN coordinator node and a specific number of end nodes (Reduced Function Devices). All nodes are part of the same wireless subnet. All nodes operate using the 802.15.4 wireless standard. Routing is done in a static fashion. The beacon order of all nodes is set to 15. This disables the beaconing mode of the mesh network. Therefore, the nodes operate by polling the coordinator for new data with a preset polling interval. In between poll cycles, the transmission interfaces of the end nodes can go to sleep.
+
+The unmodified version of Qualnet does not allow end nodes to sleep in a non-beacon-mode 802.15.4 mesh network. In order to implement this behavior, we had to change the source code of Qualnet. Specifically this involved commenting out \texttt{|| sscs802\_15\_4->t\_BO == 15} on line 379 in the file \textit{sscs\_802\_15\_4.cpp} of the sensor networks library.
+
+Traffic generation in our simulations is accomplished by using a \texttt{SUPER-APP} traffic generator for each end node. The source of the traffic is always the coordinator. All network communication is done unreliable (UDP). The size of the request package is 8 bytes. The package frequency is exponentially distributed. The mean of the package frequency as well as the number of packets is determined based on the desired workload of the overall network. The reply function of the traffic generator is set to reply with exactly one packet, that also has a payload of eight bytes. These replies are send out with a delay of exactly 100ms.
+
 
