@@ -18,5 +18,5 @@ plot "data" u 1:2 title col with linespoints lt -1,\
 "" u 1:3 title col with linespoints lt -1,\
 "" u 1:4 title col with linespoints lt -1,\
 "" u 1:5 title col with linespoints lt -1,\
-(x+0.01)/2.0 title "model (simulation)" lt -1,\
-(x+0.3)/2.0 title "model (prototype)" lt -1
+(x+0.01)/2.0 title "model (simulation)" with linespoints lt -1,\
+(x+0.3)/2.0 title "model (prototype)" with linespoints lt -1

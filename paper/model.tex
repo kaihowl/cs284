@@ -4,7 +4,7 @@ In this section, we will develop a model of delay and queue utilization of our s
 \begin{equation}
 \psi = W + W_{end node}
 \end{equation}
-where $W$ is the wait time in the front-end, $W_{end node}$ is the wait time experienced by the end-node. We focus on the $W$ since it is effected by the dynamics of sleeping and buffering, where $W_{end node}$ is predictable and can be substituted with a constant value dependent on the channel characteristics and processing requirements. We will use an M/G/1 queue model with vacations. We denote the amount of incoming traffic to the network by $\lambda$. The distribution of inter-arrival times, $A(t)$, is exponential, where the mean is $\frac{1}{\lambda}$. The service time, denoted as $X$, is translated as the time required to service the packet in the head of the queue of the front-end. This value is dependent on the contention of the medium.
+where $W$ is the wait time in the front-end, and $W_{end node}$ is the wait time experienced by the end-node. We focus on $W$ since it is effected by the dynamics of sleeping and buffering, where $W_{end node}$ is predictable and can be derived by available models in literature. We will use an M/G/1 queue model with vacations. We denote the amount of incoming traffic to the network by $\lambda$. The distribution of inter-arrival times, $A(t)$, is exponential, where the mean is $\frac{1}{\lambda}$. The service time, denoted as $X$, is translated as the time required to service the packet in the head of the queue of the front-end. This value is dependent on the contention of the medium.
 
 %We start by observing the waiting time. It is the summation of time spent in the queue in addition to the service time, given by
 %\begin{equation}
@@ -32,7 +32,7 @@ where $W$ is the wait time in the front-end, $W_{end node}$ is the wait time exp
 %\label{eq:residual}
 %R = \frac{\lambda\bar{X^2}}{2} + \frac{(1-\rho)\bar{V^2}}{2\bar{V}}
 %\end{equation}
-For such a system, the wait time can be calculated by the following equation:
+For such a system, the wait time can be calculated by the following equation~\cite{21}:
 \begin{equation}
 \label{eq:waiting_2}
 W = \frac{\lambda\bar{X^2}}{2 (1-\rho)} + \frac{\bar{V^2}}{2\bar{V}}
